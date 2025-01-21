@@ -9,7 +9,7 @@ setup(
     author='Joseph Chay',
     author_email='josephemmanuelchay@gmail.com',
     url='https://github.com/josephchay/codebase-flattener',
-    packages=find_packages(where='src'),
+    py_modules=['main'],
     package_dir={'': 'src'},
     entry_points={
         'console_scripts': [
