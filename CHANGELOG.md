@@ -10,3 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `main.py` script for flattening python project files.
 - `setup.py` file.
+- Added entry point in `setup.py`.
+
+### Changed
+- Execution script in `README.md`.
+- Updated `README.md`.

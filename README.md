@@ -1,13 +1,11 @@
-# **Codebase Flatterner**
+# **Codebase Flattener**  
 
 *Effortlessly declutter your project by flattening nested `.py` files into a single folder.*
-
----
 
 ## **Overview**
 
 Do you often find yourself digging through multiple nested directories to find Python files?  
-**Flatten Directory** is here to simplify your life! This lightweight CLI tool scans through your source directory (and all its subdirectories), collects all `.py` files (excluding `__init__.py`), and copies them into a single destination directory — all while automatically renaming conflicting files. 
+**Codebase Flattener** is here to simplify your life! This lightweight CLI tool scans through your source directory (and all its subdirectories), collects all `.py` files (excluding `__init__.py`), and copies them into a single destination directory — all while automatically renaming conflicting files. 
 
 It's perfect for organizing large codebases, consolidating scripts, or preparing for migration or backup.
 
@@ -27,16 +25,14 @@ It's perfect for organizing large codebases, consolidating scripts, or preparing
 Install the package from source:
 
 ```bash
-pip install git+https://github.com/josephchay/codebase-flattener.git
+pip install .
 ```
 
 ## **Usage**
-Use the tool from the command line with the `src.main` command:
+Use the tool from the command line with the `codebase-flattener` command:
 
 ```bash
-python src.main.py
-    --src src \
-    --dest dest
+codebase-flattener --src <source_directory> --dest <destination_directory>
 ```
 
 **Command-Line Arguments**:
@@ -60,9 +56,7 @@ project/
 Running this command:
 
 ```bash
-python src.main.py
-    --src project \
-    --dest flattened_project
+codebase-flattener --src project --dest flattened_project
 ```
 
 Will result in:
@@ -81,7 +75,7 @@ flattened_project/
 4. **Copy Operation**: Uses `shutil.copy2()` to preserve metadata while copying files.
 5. **Clean Destination**: Ensures the destination folder is emptied before starting.
 
-## **Why Use Flatten Directory?**
+## **Why Use Codebase Flattener?**
 * Save time navigating large, deeply nested projects.
 * Quickly consolidate files for migration, sharing, or debugging.
 * Eliminate clutter while maintaining file integrity.
@@ -123,4 +117,4 @@ Need help? Have a question? Feel free to reach out:
 * **Email**: josephemmanuelchay@gmail.com
 * **GitHub Issues**: [Issues](https://github.com/josephchay/codebase-flattener/issues)
 
-Make your life easier and your projects cleaner — flatten your directories today! 🎉
+Make your life easier and your projects cleaner — flatten your directories today!

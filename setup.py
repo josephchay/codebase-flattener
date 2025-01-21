@@ -11,6 +11,11 @@ setup(
     url='https://github.com/josephchay/codebase-flattener',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
+    entry_points={
+        'console_scripts': [
+            'codebase-flattener=src.main:main',
+        ],
+    },
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
