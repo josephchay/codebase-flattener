@@ -25,7 +25,7 @@ It's perfect for organizing large codebases, consolidating scripts, or preparing
 Install the package from source:
 
 ```bash
-pip install .
+pip install git+https://github.com/josephchay/codebase-flattener.git
 ```
 
 ## **Usage**
