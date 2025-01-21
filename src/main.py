@@ -42,7 +42,15 @@ def main():
     parser.add_argument("--dest", required=True, help="Destination directory path")
     args = parser.parse_args()
 
-    flatten_directory(args.src, args.dest)
+    try:
+        flatten_directory(args.src, args.dest)
+    except ValueError as e:
+        print(f"Error: {e}")
+        return 1
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

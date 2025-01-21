@@ -13,7 +13,7 @@ setup(
     package_dir={'': 'src'},
     entry_points={
         'console_scripts': [
-            'codebase-flattener=src.main:main',
+            'codebase-flattener=main:main',
         ],
     },
     classifiers=[
