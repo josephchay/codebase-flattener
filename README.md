@@ -17,6 +17,7 @@ It's perfect for organizing large codebases, consolidating scripts, or preparing
 - **Handles File Name Conflicts**: Renames files with duplicate names to ensure no overwriting.
 - **Clean Destination Directory**: Automatically clears the destination folder before copying.
 - **Command-Line Simplicity**: Provides an easy-to-use CLI interface.
+- **Directory Path Preservation**: Option to prefix files with their original directory structure.
 
 ---
 
@@ -28,49 +29,75 @@ Install the package from source:
 pip install git+https://github.com/josephchay/codebase-flattener.git
 ```
 
-## **Usage**
-Use the tool from the command line with the `codebase-flattener` command:
+## **Command-Line Arguments**
 
-```bash
-codebase-flattener --src <source_directory> --dest <destination_directory>
+| Argument | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `--src` | Yes | - | Source directory containing the Python files to flatten |
+| `--dest` | Yes | - | Destination directory where files will be copied |
+| `--include-init` | No | `False` | Include `__init__.py` files in the flattening process |
+
+## **Usage Examples**
+
+Here are various scenarios and how to use the tool:
+
+| Scenario | Command | Description |
+|----------|---------|-------------|
+| Basic Flattening | `codebase-flattener --src src --dest flat` | Flattens all `.py` files (except `__init__.py`) into the 'flat' directory |
+| Include Init Files | `codebase-flattener --src src --dest flat --include-init` | Includes `__init__.py` files in the flattening process |
+| Relative Paths | `codebase-flattener --src ../project/src --dest ./flat` | Works with relative paths |
+| Absolute Paths | `codebase-flattener --src /path/to/src --dest /path/to/dest` | Works with absolute paths |
+
+### **Example Directory Transformations**
+
+**Example 1: Basic Flattening**
 ```
-
-**Command-Line Arguments**:
-* `--src`: Path to the source directory containing nested `.py` files.
-* `--dest`: Path to the destination directory where files will be copied.
-
-**Example**:
-Imagine you have the following directory structure:
-
-```
-project/
-├── module1/
-│   ├── script1.py
-│   ├── __init__.py
+Before:                             After:
+src/                               flat/
+├── module1/                       ├── script1.py
+│   ├── script1.py                 ├── helper.py
+│   ├── __init__.py               └── script2.py
 │   └── utils/
 │       └── helper.py
-├── module2/
-│   └── script2.py
+└── module2/
+    └── script2.py
+
+Command: codebase-flattener --src src --dest flat
 ```
 
-Running this command:
+**Example 2: With Directory Prefixes**
+```
+Before:                             After:
+src/                               flat/
+├── auth/                          ├── auth__login.py
+│   ├── login.py                   ├── auth__utils__validator.py
+│   └── utils/                     ├── models__user.py
+│       └── validator.py           └── models__data__schema.py
+└── models/
+    ├── user.py
+    └── data/
+        └── schema.py
 
-```bash
-codebase-flattener --src project --dest flattened_project
+Command: codebase-flattener --src src --dest flat
 ```
 
-Will result in:
-
+**Example 3: Including Init Files**
 ```
-flattened_project/
-├── script1.py
-├── helper.py
-├── script2.py
+Before:                             After:
+src/                               flat/
+├── core/                          ├── core____init__.py
+│   ├── __init__.py               ├── core__main.py
+│   ├── main.py                   ├── plugins____init__.py
+│   └── plugins/                  └── plugins__extra.py
+│       ├── __init__.py
+│       └── extra.py
+
+Command: codebase-flattener --src src --dest flat --include-init
 ```
 
 ## **How It Works**
 1. **Directory Traversal**: Recursively scans through the source directory using `os.walk()`.
-2. **File Filtering**: Selects `.py` files, skipping `__init__.py`.
+2. **File Filtering**: Selects `.py` files, skipping `__init__.py` (unless `--include-init` is used).
 3. **Conflict Resolution**: Renames files if conflicts are detected in the destination folder.
 4. **Copy Operation**: Uses `shutil.copy2()` to preserve metadata while copying files.
 5. **Clean Destination**: Ensures the destination folder is emptied before starting.

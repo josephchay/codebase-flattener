@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added entry point in `setup.py`.
 - Added try-exception blocks in main function execution.
 - package installation command.
+- Made inclusion of `__init__.py` files for conversion optional - by default not included.
+- Coppied files are now prefixed with their parent directory names and Directory names are separated by double hyphens `__`.
 
 ### Changed
 - Execution script in `README.md`.
