@@ -31,22 +31,22 @@ pip install git+https://github.com/josephchay/codebase-flattener.git
 
 ## **Command-Line Arguments**
 
-| Argument | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `--src` | Yes | - | Source directory containing the Python files to flatten |
-| `--dest` | Yes | - | Destination directory where files will be copied |
-| `--include-init` | No | `False` | Include `__init__.py` files in the flattening process |
+| Argument         | Required | Default | Description                                             |
+|------------------|----------|---------|---------------------------------------------------------|
+| `--src`          | Yes      | -       | Source directory containing the Python files to flatten |
+| `--dest`         | Yes      | -       | Destination directory where files will be copied        |
+| `--include-init` | No       | `False` | Include `__init__.py` files in the flattening process   |
 
 ## **Usage Examples**
 
 Here are various scenarios and how to use the tool:
 
-| Scenario | Command | Description |
-|----------|---------|-------------|
-| Basic Flattening | `codebase-flattener --src src --dest flat` | Flattens all `.py` files (except `__init__.py`) into the 'flat' directory |
-| Include Init Files | `codebase-flattener --src src --dest flat --include-init` | Includes `__init__.py` files in the flattening process |
-| Relative Paths | `codebase-flattener --src ../project/src --dest ./flat` | Works with relative paths |
-| Absolute Paths | `codebase-flattener --src /path/to/src --dest /path/to/dest` | Works with absolute paths |
+| Scenario           | Command                                                      | Description                                                               |
+|--------------------|--------------------------------------------------------------|---------------------------------------------------------------------------|
+| Basic Flattening   | `codebase-flattener --src src --dest flat`                   | Flattens all `.py` files (except `__init__.py`) into the 'flat' directory |
+| Include Init Files | `codebase-flattener --src src --dest flat --include-init`    | Includes `__init__.py` files in the flattening process                    |
+| Relative Paths     | `codebase-flattener --src ../project/src --dest ./flat`      | Works with relative paths                                                 |
+| Absolute Paths     | `codebase-flattener --src /path/to/src --dest /path/to/dest` | Works with absolute paths                                                 |
 
 ### **Example Directory Transformations**
 
