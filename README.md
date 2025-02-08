@@ -56,7 +56,7 @@ Before:                             After:
 src/                               flat/
 ├── module1/                       ├── script1.py
 │   ├── script1.py                 ├── helper.py
-│   ├── __init__.py               └── script2.py
+│   ├── __init__.py                └── script2.py
 │   └── utils/
 │       └── helper.py
 └── module2/
